@@ -1,6 +1,7 @@
 import {LitElement, html} from 'https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module';
 import ContactsList from '/js/components/ContactsList.js';
 
+// This is the main content area
 export default class ContentArea extends LitElement {
   constructor() {
     super();
