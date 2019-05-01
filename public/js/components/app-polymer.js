@@ -11,6 +11,8 @@ class CounterComp extends LitElement {
     }
   }
 
+//partur 18: búinn með 9:29 polymer 3
+
 
   static get properties() {
     return {
@@ -28,7 +30,10 @@ class CounterComp extends LitElement {
   render() {
     return html`
       <style>
-
+        .main-page {
+          display: grid;
+          grid-template-columns: 250px 1fr;
+        }
       </style>
       <div class="main-page">
         <side-menu></side-menu>

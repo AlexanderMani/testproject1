@@ -1,7 +1,5 @@
 import {LitElement, html} from 'https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module';
 import ContactsList from '/js/components/ContactsList.js';
-
-// This is the main content area
 export default class ContentArea extends LitElement {
   constructor() {
     super();
@@ -22,7 +20,10 @@ export default class ContentArea extends LitElement {
   render() {
     return html`
       <style>
-
+        #content-area {
+          background: #fcdfff;
+          padding: 50px 80px;
+        }
       </style>
       <section id="content-area">
         <contacts-list></contacts-list>
