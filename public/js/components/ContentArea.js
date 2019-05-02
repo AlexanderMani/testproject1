@@ -1,6 +1,9 @@
 import {LitElement, html} from 'https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module';
 import ContactsList from '/js/components/ContactsList.js';
+import FavoritesList from '/js/components/FavoritesList.js';
+
 export default class ContentArea extends LitElement {
+
   constructor() {
     super();
     this.total = {
@@ -26,6 +29,7 @@ export default class ContentArea extends LitElement {
         }
       </style>
       <section id="content-area">
+        <favorites-list></favorites-list>
         <contacts-list></contacts-list>
       </section>
     `

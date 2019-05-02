@@ -1,6 +1,6 @@
-  import {LitElement, html} from 'https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module';
+import {LitElement, html} from 'https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module';
 
-export default class ContactsList extends LitElement {
+export default class FavoritesList extends LitElement {
   constructor() {
     super();
     this.total = {
@@ -131,4 +131,4 @@ export default class ContactsList extends LitElement {
   }
 }
 
-customElements.define('contacts-list', ContactsList);
+customElements.define('favorites-list', FavoritesList);
