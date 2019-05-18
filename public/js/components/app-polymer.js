@@ -9,10 +9,11 @@ class CounterComp extends LitElement {
     this.total = {
       number: 0
     }
+    this.popupOpen = false 
+    this.togglePopup = this.togglePopup.bind(this)
   }
 
-//partur 18: búinn með 9:29 polymer 3
-
+// Kominn á 23:22 mín á opening and closing the form popup 
 
   static get properties() {
     return {
@@ -23,21 +24,28 @@ class CounterComp extends LitElement {
   firstUpdated() {
 
   }
-
+  
+  togglePopup() {
+    this.popupOpen = !this.popupOpen
+    console.log('clicked button')
+    console.log(this.popupOpen) 
+    this.requestUpdate();
+  }
 
 
 
   render() {
     return html`
       <style>
+      @import '/css/global.css';
         .main-page {
           display: grid;
           grid-template-columns: 250px 1fr;
         }
       </style>
       <div class="main-page">
-        <side-menu></side-menu>
-        <content-area> </content-area>
+        <side-menu togglePopup="${this.togglePopup}"></side-menu>
+        <content-area popupOpen="${this.popupOpen}"togglePopup="${this.togglePopup}"> </content-area>
       </div>
 
     `
