@@ -26,7 +26,7 @@ export default class ContentArea extends LitElement {
   render() {
     return html`
       <style>
-      @import '/css/global.css'; 
+      @import '/css/global.css';
         #content-area {
           background: #fcdfff;
           padding: 50px 80px;

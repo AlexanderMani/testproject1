@@ -15,7 +15,7 @@ export default class FormPopup extends LitElement {
     return {
       total: Object,
       popupOpen: Boolean
-      
+
     }
   }
 
@@ -25,8 +25,8 @@ export default class FormPopup extends LitElement {
   render() {
     return html`
       <style>
-         
-      @import '/css/global.css'; 
+
+      @import '/css/global.css';
 
         .form-popup {
           background: #2b304c;
@@ -35,9 +35,9 @@ export default class FormPopup extends LitElement {
           position: fixed;
           top: 0;
           left: 0;
-          display: flex; 
+          display: flex;
           justify-content: center;
-          align-items: center; 
+          align-items: center;
           visibility: hidden;
           opacity: 0;
           transition: all .4s ease-in-out;
@@ -46,144 +46,145 @@ export default class FormPopup extends LitElement {
         .form-popup.active{
           visibility: visible;
         }
-        
+
         form {
             background: white;
-            width: 400px; 
-            padding: 20px; 
+            width: 400px;
+            padding: 20px;
             border-radius: 10px;
-            display: grid; 
+            display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
-            grid-gap: 20px; 
+            grid-gap: 20px;
         }
 
         h2 {
           font-size: 1.4rem;
           font-weight: 500;
-          grid-column: 1/5; 
+          grid-column: 1/5;
         }
 
         .form-group {
           padding: 0px;
-          position: relative; 
+          position: relative;
         }
-        
+
         label {
-          background: white; 
+          background: white;
           font-size: .7rem;
-          position: absolute; 
+          position: absolute;
           top: -5px;
           display: inline-block;
-          
+
         }
 
         input[type="text"] {
           padding: 10px;
-          display: block; 
-          width: 100%; 
+          display: block;
+          width: 100%;
         }
 
         .first-name {
-          grid-column: 1/3; 
+          grid-column: 1/3;
         }
-      
+
         .last-name {
-          grid-column: 3/5; 
+          grid-column: 3/5;
         }
 
         .address-1 {
-          grid-column: 1/5; 
+          grid-column: 1/5;
         }
 
 
         .address-2 {
-          grid-column: 1/5; 
+          grid-column: 1/5;
         }
 
         .city {
-          grid-column: 1/3; 
+          grid-column: 1/3;
         }
 
         .button {
-          justify-self: end; 
-          grid-column: 4/5;  
+          justify-self: end;
+          grid-column: 4/5;
         }
 
         .button button {
-          padding: 10px 25px; 
+          padding: 10px 25px;
           cursor: pointer;
           background: rgb(30,87,153);
-          border: 1px solid rgba(0, 0, 0, .1); 
+          border: 1px solid rgba(0, 0, 0, .1);
           color: white;
-          border-radius: 5px; 
+          border-radius: 5px;
         }
 
         .closing-btn {
           position: absolute;
-          z-index: 3; 
-          right: 20px; 
+          z-index: 3;
+          right: 20px;
           top: 0;
           font-size: 2rem;
           color: black;
-          padding: 20 px;  
+          padding: 20 px;
         }
 
         .closing-btn svg{
-          width: 24px; 
+          width: 24px;
           height: 24px;
-          fill: white; 
+          fill: white;
         }
 
 
       </style>
 
-      <section className="form-popup ${(this.popupOpen) ? 'active' : ''}">
+      <section className="form-popup ${this.popupOpen ? 'active' : ''}">
         <form>
-          
+
         <div class="closing-btn" @click="${this.togglePopup}">
-          <svg xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 352 512"><path xmlns="http://www.w3.org/2000/svg" fill=
-            "currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/>g>
+          <svg xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 352 512"><path xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.
+            28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></svg>
         </div>
-          
+
         <h2> Add a new contact </h2>
         <div class="form-group first-name">
-          <label for=first_name">First Name </label>
+          <label for="first_name">First Name </label>
           <input type="text" name="first_name">
         </div>
 
           <div class="form-group last-name">
-            <label for=first_name">Last Name </label>
+            <label for="first_name">Last Name </label>
             <input type="text" name="last_name">
           </div>
 
           <div class="form-group address-1">
-            <label for=first_name">Address #1 </label>
+            <label for="first_name">Address #1 </label>
             <input type="text" name="address_1">
           </div>
 
           <div class="form-group address-2 ">
-            <label for=first_name">Address #2 </label>
+            <label for="first_name">Address #2 </label>
             <input type="text" name="address_2">
           </div>
 
           <div class="form-group city">
-            <label for=first_name">City </label>
+            <label for="first_name">City </label>
             <input type="text" name="City">
           </div>
 
           <div class="form-group state">
-            <label for=first_name">State</label>
+            <label for="first_name">State</label>
             <input type="text" name="state">
           </div>
 
           <div class="form-group zipcode">
-            <label for=first_name">Zipcode </label>
+            <label for="first_name">Zipcode</label>
             <input type="text" name="zipcode">
           </div>
 
           <div class="form-group button">
-            
+
             <button type="submit">Add</button >
           </div>
 
