@@ -9,12 +9,14 @@ export default class FormPopup extends LitElement {
     this.total = {
       number: 0
     }
+    this.formData = {}
   }
 
   static get properties() {
     return {
       total: Object,
-      popupOpen: Boolean
+      popupOpen: Boolean,
+      formData: Object
 
     }
   }
@@ -22,11 +24,21 @@ export default class FormPopup extends LitElement {
   firstUpdated() {
   }
 
+  change(event) {
+    let formData = {}
+    let name = event.target.name
+    let value = (event.target.type === 'checkbox') ? event.target.checked : event.target.value
+
+    formData[name] = value
+    this.formData = object.assign({}, formData)
+    this.change = this.change.bind(this)
+
+    console.log(this.formData)
+  }
+
   render() {
     return html`
       <style>
-
-      @import '/css/global.css';
 
         .form-popup {
           background: #2b304c;
@@ -39,11 +51,11 @@ export default class FormPopup extends LitElement {
           justify-content: center;
           align-items: center;
           visibility: hidden;
-          opacity: 0;
+          opacity: 1.0;
           transition: all .4s ease-in-out;
         }
 
-        .form-popup.active{
+        .form-popup.active {
           visibility: visible;
         }
 
@@ -137,20 +149,18 @@ export default class FormPopup extends LitElement {
 
       </style>
 
-      <section className="form-popup ${this.popupOpen ? 'active' : ''}">
+      <section class="form-popup ${this.popupOpen ? 'active' : ''}">
         <form>
 
         <div class="closing-btn" @click="${this.togglePopup}">
           <svg xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 352 512"><path xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.
-            28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></svg>
+            viewBox="0 0 352 512"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></svg>
         </div>
 
         <h2> Add a new contact </h2>
         <div class="form-group first-name">
           <label for="first_name">First Name </label>
-          <input type="text" name="first_name">
+          <input type="text" name="first_name" on-keyup="${this.change}" >
         </div>
 
           <div class="form-group last-name">

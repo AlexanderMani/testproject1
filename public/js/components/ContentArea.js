@@ -33,9 +33,9 @@ export default class ContentArea extends LitElement {
         }
       </style>
       <section id="content-area">
+      <form-popup .popupOpen="${this.popupOpen}" .togglePopup="${this.togglePopup}"></form-popup>
         <favorites-list></favorites-list>
         <contacts-list></contacts-list>
-        <form-popup popupOpen="${this.popupOpen} togglePopup="${this.togglePopup}" "></form-popup>
       </section>
     `
   }
