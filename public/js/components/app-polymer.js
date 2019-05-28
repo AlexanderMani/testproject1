@@ -11,6 +11,8 @@ class CounterComp extends LitElement {
     }
     this.popupOpen = false
     this.togglePopup = this.togglePopup.bind(this)
+    this.saveContact = this.saveContact.bind(this)
+    this.allContacts = []
   }
 
 // Kominn á 4,08 mín á working on the logic of the form
@@ -18,7 +20,8 @@ class CounterComp extends LitElement {
   static get properties() {
     return {
       total: Object,
-      popupOpen: Boolean
+      popupOpen: Boolean,
+      allContacts: Array
     }
   }
 
@@ -30,6 +33,20 @@ class CounterComp extends LitElement {
     this.popupOpen = !this.popupOpen
     console.log('clicked button')
     console.log(this.popupOpen)
+  }
+
+  saveContact(contact, event) {
+    event.preventDefault()
+    console.log('Saved contact')
+    console.log(contact)
+    function immutablePush(arr, newEntry) {
+      return [ ...arr, newEntry]
+    }
+
+    let newArray = immutablePush(this.allContacts, contact)
+    this.allContacts = newArray
+    console.log('==============')
+    console.log(this.allContacts)
   }
 
 
@@ -45,7 +62,7 @@ class CounterComp extends LitElement {
       </style>
       <div class="main-page">
         <side-menu .togglePopup="${this.togglePopup}"></side-menu>
-        <content-area .popupOpen="${this.popupOpen}" .togglePopup="${this.togglePopup}"> </content-area>
+        <content-area .popupOpen="${this.popupOpen}" .togglePopup="${this.togglePopup}" .saveContact="${this.saveContact}" > </content-area>
       </div>
 
     `

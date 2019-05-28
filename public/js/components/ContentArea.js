@@ -16,7 +16,8 @@ export default class ContentArea extends LitElement {
     return {
       total: Object,
       popupOpen: Boolean,
-      togglePopup: Function
+      togglePopup: Function,
+      saveContact: Function,
     }
   }
 
@@ -33,7 +34,7 @@ export default class ContentArea extends LitElement {
         }
       </style>
       <section id="content-area">
-      <form-popup .popupOpen="${this.popupOpen}" .togglePopup="${this.togglePopup}"></form-popup>
+      <form-popup .popupOpen="${this.popupOpen}" .togglePopup="${this.togglePopup}" .saveContact="${this.saveContact}"></form-popup>
         <favorites-list></favorites-list>
         <contacts-list></contacts-list>
       </section>
